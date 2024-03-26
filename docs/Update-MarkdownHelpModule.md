@@ -14,8 +14,8 @@ Update all files in a markdown help module folder.
 
 ```
 Update-MarkdownHelpModule [-Path] <String[]> [[-Encoding] <Encoding>] [-RefreshModulePage]
- [-ModulePagePath <String>] [[-LogPath] <String>] [-LogAppend] [-AlphabeticParamsOrder] [-UseFullTypeName]
- [-UpdateInputOutput] [-Force] [-Session <PSSession>] [-ExcludeDontShow] [<CommonParameters>]
+ [[-ModulePagePath] <String>] [[-LogPath] <String>] [-LogAppend] [-AlphabeticParamsOrder] [-UseFullTypeName]
+ [-UpdateInputOutput] [-Force] [[-Session] <PSSession>] [-ExcludeDontShow] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -48,6 +48,23 @@ The command creates markdown help topics for any cmdlets that are not already in
 
 ## PARAMETERS
 
+### -AlphabeticParamsOrder
+Order parameters alphabetically by name in PARAMETERS section.
+There are 5 exceptions: -Confirm, -WhatIf, -IncludeTotalCount, -Skip, and -First parameters will be the last.
+These parameters are common and hence have well-defined behavior.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Encoding
 Specifies the character encoding for your markdown help files.
 Specify a **System.Text.Encoding** object.
@@ -63,6 +80,36 @@ Aliases:
 Required: False
 Position: 1
 Default value: UTF8 without BOM
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ExcludeDontShow
+Exclude the parameters marked with `DontShow` in the parameter attribute from the help content.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Force
+Remove help files that no longer exists within sessions (for example if function was deleted)
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -86,6 +133,21 @@ Accept wildcard characters: False
 Specifies a file path for log information.
 The cmdlet writes the VERBOSE stream to the log.
 If you specify the *Verbose* parameter, this cmdlet also writes that information to the console.
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: 3
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ModulePagePath
+When -RefreshModulePage is used by default it puts .md file in same location as all other docs. With this parameter you can specify new name/location providing better placement options.
 
 ```yaml
 Type: String
@@ -130,23 +192,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -AlphabeticParamsOrder
-Order parameters alphabetically by name in PARAMETERS section.
-There are 5 exceptions: -Confirm, -WhatIf, -IncludeTotalCount, -Skip, and -First parameters will be the last.
-These parameters are common and hence have well-defined behavior.
-
-```yaml
-Type: SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -Session
 Provides support for remote commands.
 Pass the session that you used to create the commands with `Import-PSSession`.
@@ -154,6 +199,21 @@ This is required to get accurate parameters metadata from the remote session.
 
 ```yaml
 Type: PSSession
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: 4
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -UpdateInputOutput
+Refreshes the Input and Output sections to reflect the current state of the cmdlet.  WARNING: this parameter will remove any manual additions to these sections.
+
+```yaml
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -179,68 +239,8 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -UpdateInputOutput
-Refreshes the Input and Output sections to reflect the current state of the cmdlet.  WARNING: this parameter will remove any manual additions to these sections.
-
-```yaml
-Type: SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ModulePagePath
-When -RefreshModulePage is used by default it puts .md file in same location as all other docs. With this parameter you can specify new name/location providing better placement options.
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Force
-Remove help files that no longer exists within sessions (for example if function was deleted)
-
-```yaml
-Type: SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ExcludeDontShow
-Exclude the parameters marked with `DontShow` in the parameter attribute from the help content.
-
-```yaml
-Type: SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -ProgressAction, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 
