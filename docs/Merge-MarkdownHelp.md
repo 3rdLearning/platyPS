@@ -13,8 +13,8 @@ Merge multiple markdown versions of the same cmdlet into a single markdown file.
 ## SYNTAX
 
 ```
-Merge-MarkdownHelp [-Path] <String[]> [-OutputPath] <String> [-Encoding <Encoding>] [-ExplicitApplicableIfAll]
- [-Force] [[-MergeMarker] <String>] [<CommonParameters>]
+Merge-MarkdownHelp [-Path] <String[]> [-OutputPath] <String> [[-Encoding] <Encoding>]
+ [-ExplicitApplicableIfAll] [-Force] [[-MergeMarker] <String>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -57,7 +57,7 @@ Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: Named
+Position: 2
 Default value: UTF8 without BOM
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -142,7 +142,7 @@ Accept wildcard characters: True
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -ProgressAction, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 

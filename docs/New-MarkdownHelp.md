@@ -130,6 +130,23 @@ The command creates a file named PSReadLine.md that contains links to the other 
 
 ## PARAMETERS
 
+### -AlphabeticParamsOrder
+Order parameters alphabetically by name in PARAMETERS section.
+There are 5 exceptions: -Confirm, -WhatIf, -IncludeTotalCount, -Skip, and -First parameters will be the last.
+These parameters are common and hence have well-defined behavior.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Command
 Specifies the name of a command in your current session.
 This can be any command supported by Windows PowerShell help, such as a cmdlet or a function.
@@ -140,6 +157,39 @@ Parameter Sets: FromCommand
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ConvertDoubleDashLists
+Indicates that this cmldet converts double-hyphen list bullets into single-hyphen bullets.
+Double-hyphen lists are common in Windows PowerShell documentation.
+Markdown accepts single-hyphens for lists.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: FromMaml
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ConvertNotesToList
+Indicates that this cmldet formats multiple paragraph items in the **NOTES** section as single list items.
+This output follows TechNet formatting.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: FromMaml
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -161,6 +211,21 @@ Aliases:
 Required: False
 Position: Named
 Default value: UTF8 without BOM
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ExcludeDontShow
+Exclude the parameters marked with `DontShow` in the parameter attribute from the help content.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -314,6 +379,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ModulePagePath
+When *WithModule* parameter is used by default it puts .md file in same location as all other docs. With this parameter you can specify new name/location providing better placement options.
+
+```yaml
+Type: String
+Parameter Sets: FromModule, FromMaml
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -NoMetadata
 Indicates that this cmdlet does not write any metadata in the generated markdown.
 
@@ -360,65 +440,14 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -WithModulePage
-Indicates that this cmdlet creates a module page in the output folder.
-This file has the name that the *ModuleName* parameter specifies.
-If you did not specify that parameter, the cmdlet supplies the default name MamlModule.
-You can overwrite this setting by using *ModulePagePath* which allows you to define different path for module page
+### -Session
+Provides support for remote commands.
+Pass the session that you used to create the commands with `Import-PSSession`.
+This is required to get accurate parameters metadata from the remote session.
 
 ```yaml
-Type: SwitchParameter
-Parameter Sets: FromModule, FromMaml
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ConvertNotesToList
-Indicates that this cmldet formats multiple paragraph items in the **NOTES** section as single list items.
-This output follows TechNet formatting.
-
-```yaml
-Type: SwitchParameter
-Parameter Sets: FromMaml
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ConvertDoubleDashLists
-Indicates that this cmldet converts double-hyphen list bullets into single-hyphen bullets.
-Double-hyphen lists are common in Windows PowerShell documentation.
-Markdown accepts single-hyphens for lists.
-
-```yaml
-Type: SwitchParameter
-Parameter Sets: FromMaml
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -AlphabeticParamsOrder
-Order parameters alphabetically by name in PARAMETERS section.
-There are 5 exceptions: -Confirm, -WhatIf, -IncludeTotalCount, -Skip, and -First parameters will be the last.
-These parameters are common and hence have well-defined behavior.
-
-```yaml
-Type: SwitchParameter
-Parameter Sets: (All)
+Type: PSSession
+Parameter Sets: FromModule, FromCommand
 Aliases:
 
 Required: False
@@ -443,28 +472,14 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Session
-Provides support for remote commands.
-Pass the session that you used to create the commands with `Import-PSSession`.
-This is required to get accurate parameters metadata from the remote session.
+### -WithModulePage
+Indicates that this cmdlet creates a module page in the output folder.
+This file has the name that the *ModuleName* parameter specifies.
+If you did not specify that parameter, the cmdlet supplies the default name MamlModule.
+You can overwrite this setting by using *ModulePagePath* which allows you to define different path for module page
 
 ```yaml
-Type: PSSession
-Parameter Sets: FromModule, FromCommand
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ModulePagePath
-When *WithModule* parameter is used by default it puts .md file in same location as all other docs. With this parameter you can specify new name/location providing better placement options.
-
-```yaml
-Type: String
+Type: SwitchParameter
 Parameter Sets: FromModule, FromMaml
 Aliases:
 
@@ -475,23 +490,8 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ExcludeDontShow
-Exclude the parameters marked with `DontShow` in the parameter attribute from the help content.
-
-```yaml
-Type: SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -ProgressAction, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 

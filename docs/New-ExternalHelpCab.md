@@ -13,7 +13,7 @@ Generates a .cab file.
 ## SYNTAX
 
 ```
-New-ExternalHelpCab -CabFilesFolder <String> -LandingPagePath <String> -OutputFolder <String>
+New-ExternalHelpCab [-CabFilesFolder] <String> [-LandingPagePath] <String> [-OutputFolder] <String>
  [-IncrementHelpVersion] [<CommonParameters>]
 ```
 
@@ -52,38 +52,7 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -LandingPagePath
-Specifies the full path of the Module Markdown file that contains all the metadata required to name the .cab file.
-For the required metadata, run **New-MarkdownHelp** with the *WithLandingPage* parameter.
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -OutputFolder
-Specifies the location of the .cab file and helpinfo.xml file that this cmdlet creates.
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases:
-
-Required: True
-Position: Named
+Position: 0
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -104,8 +73,39 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -LandingPagePath
+Specifies the full path of the Module Markdown file that contains all the metadata required to name the .cab file.
+For the required metadata, run **New-MarkdownHelp** with the *WithLandingPage* parameter.
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases:
+
+Required: True
+Position: 1
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -OutputFolder
+Specifies the location of the .cab file and helpinfo.xml file that this cmdlet creates.
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases:
+
+Required: True
+Position: 2
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -ProgressAction, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 
