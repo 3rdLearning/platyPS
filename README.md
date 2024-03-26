@@ -4,7 +4,7 @@
 
 PlatyPS is a PowerShell module that is used to update and maintain module help documentation and it is used by PLS 3rd Learning as part of its PowerShell module template.
 
-This is an internal fork of PlatyPS that resolves an issue with the generation of help documentation that doesn't take into account new common parameters introduced in PowerShell version 7.4.  This causes extra parameters to be included in the help documentation that shouldn't be there.  See [platyPS Issue `#595](https://github.com/PowerShell/platyPS/issues/595) for more information.  There is a pending pull request that resolves this but it doesn't look like it will be merged or fixed in version 1.x, and version 2.x remains unreleased.
+This is an internal fork of PlatyPS that resolves an issue with the generation of help documentation that doesn't take into account new common parameters introduced in PowerShell version 7.4.  This causes extra parameters to be included in the help documentation that shouldn't be there.  See [platyPS Issue #595](https://github.com/PowerShell/platyPS/issues/595) for more information.  There is a pending pull request that resolves this but it doesn't look like it will be merged or fixed in version 1.x, and version 2.x remains unreleased.
 
 ## Quick start
 
